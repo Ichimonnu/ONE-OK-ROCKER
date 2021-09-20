@@ -1,0 +1,156 @@
+<header>
+<div class="header-list">
+    <ul>
+        <li><%= link_to t("models.post.home"), posts_link_path %></li>
+        <% if user_signed_in? %>
+            <li><%= link_to t("models.post.my page"), user_path(current_user.id) %></li>
+        <% end %>
+
+        <% if user_signed_in? %>
+            <li><%= link_to t("models.post.log out"), destroy_user_session_path, method: :delete %></li>
+        <% else %>
+            <li><%= link_to t("models.post.sign up"), new_user_registration_path %></li>
+            <li><%= link_to t("models.post.log in"), new_user_session_path %></li>
+        <% end %>
+    </ul>
+</div>
+</header>
+
+<div class="haikei">
+    <%# Postを検索 %>
+    <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'search' %>
+    <% end %>
+
+    <br>
+    <%#= link_to "new post", new_post_path %>
+    <%= link_to t("models.post.new post"), new_post_path %> 
+
+    <h3>ranking</h3>
+    <%#= page_entries_info @posts %>
+    <%#= paginate @rank_posts %>
+    <% @rank_posts.each do |t| %>
+        <div class="gazou">
+            <div class="post">
+                <%= image_tag t.user.image_url, size: "30x30", class: "imagepost" if t.user.image? %>
+            </div>
+            <div class="post">
+                <%= t.user.name %>
+            </div>
+        </div>
+        <div class="post">曲名 (Title)：
+            <%= t.title %>
+        </div>
+        <div class="post">好きな理由 (Why do you like?)：
+            <%= t.content %>
+        </div>
+        <div class="post">好きな歌詞 (favorite lyric)：
+            <%= t.lyric %>
+        </div>
+        <div class="post">どんなときに聴く？ (Genre)：
+            <%= t.genre %>
+        </div>
+        <div class="youtube_url">
+            <%= t.video %>
+        </div>
+        <tr>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=t.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </tr>
+        <br>
+
+        <% if user_signed_in? %>
+            <% if current_user.already_liked?(t) %>
+                <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                    <i class="fas fa-heart"></i><%= t.likes.count %>
+                <% end %>
+            <% else %>
+                <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                    <i class="far fa-heart"></i><%= t.likes.count %>
+                <% end %>
+            <% end %>
+        <% else %>
+            <i class="far fa-heart"></i><%= t.likes.count %>
+        <% end %>
+
+        <%= t.created_at.strftime("%Y-%m-%d %H:%M") %>
+    <% end %>
+
+    <h3>posts</h3>
+
+    <%#= page_entries_info @posts %>
+    <%= paginate @posts %>
+
+    <div class="posts-container">
+        <% @posts.each do |t| %>
+            <div class = "post-container">
+                <div class="gazou">
+                <div class="post">
+                    <%= image_tag t.user.image_url, size: "30x30", class: "imagepost" if t.user.image? %>
+                </div>
+                <div class="post">
+                    <%= t.user.name %>
+                </div>
+                </div>
+                <div class="post">曲名 (Title)：
+                    <%= t.title %>
+                </div>
+                <div class="post">好きな理由 (Why do you like?)：
+                    <%= t.content %>
+                </div>
+                <div class="post">好きな歌詞 (favorite lyric)：
+                    <%= t.lyric %>
+                </div>
+                <div class="post">どんなときに聴く？ (Genre)：
+                    <%= t.genre %>
+                </div>
+                <div class="youtube_url">
+                    <%= t.video %>
+                </div>
+                <tr>
+                <iframe width="480" height="265" src="https://www.youtube.com/embed/<%=t.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </tr>
+                <br>
+                <% if user_signed_in? %>
+                    <% if current_user.already_liked?(t) %>
+                        <%= link_to post_like_path(id: t.id, post_id: t.id), method: :delete do %>
+                            <i class="fas fa-heart"></i><%= t.likes.count %>
+                        <% end %>
+                    <% else %>
+                        <%= link_to post_likes_path(id: t.id, post_id: t.id), method: :post do %>
+                            <i class="far fa-heart"></i><%= t.likes.count %>
+                        <% end %>
+                    <% end %>
+                <% else %>
+                    <i class="far fa-heart"></i><%= t.likes.count %>
+                <% end %>
+
+                <%= t.created_at.strftime("%Y-%m-%d %H:%M") %>
+                <br>
+                <%= link_to t("models.post.detail"), post_path(t.id) %>
+                <% if user_signed_in? && current_user.id == t.user_id %> 
+                    <%= link_to t("models.post.edit"), edit_post_path(t.id) %>
+                    <%#= button_to "削除する", post_path(t.id), method: :delete, data: { confirm: "really?" } %>
+                    <%= link_to t("models.post.delete"), post_path(t.id), method: :delete, data: { confirm: "really?" } %>
+                <% end %>
+            </div>
+            
+        <% end %>
+    </div>
+
+    <a href="https://www.oneokrock.com/jp/">
+    <img src="/assets/oneokrock.jpg" alt="oneokrock.jpg" class="img_icon">
+    </a>
+
+    <a href="https://twitter.com/ONEOKROCK_japan">
+    <img src="/assets/twitter.jpg" alt="twitter.jpg" class="img_icon">
+    </a>
+
+    <a href="https://www.instagram.com/oneokrockofficial/">
+    <img src="/assets/instagram.png" alt="instagram.png" class="img_icon">
+    </a>
+
+    <a href="https://www.youtube.com/user/ONEOKROCKchannel">
+    <img src="/assets/youtube.png" alt="youtube.png" class="img_icon">
+    </a>
+</div>

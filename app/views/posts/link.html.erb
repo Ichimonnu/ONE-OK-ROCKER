@@ -1,0 +1,65 @@
+<body>
+    <header>
+    <div class="header-list">
+        <ul>
+            <% if user_signed_in? %>
+                <li><%= link_to t("models.post.log out"), destroy_user_session_path, method: :delete %></li>
+            <% else %>
+                <li><%= link_to t("models.post.sign up"), new_user_registration_path %></li>
+                <li><%= link_to t("models.post.log in"), new_user_session_path %></li>
+            <% end %>
+            <% if user_signed_in? %>
+                <li><%= link_to t("models.post.my page"), user_path(current_user.id) %></li>
+            <% end %>
+        </ul>
+    </div>
+    </header>
+
+    <div class="top">
+        <h1>ONE OK ROCKER</h1>
+        <br>
+        <h2>あなたもONE OK ROCKの魅力を発信してみませんか？</h2>
+        <br>
+        <h6>このサイトでは、ONE OK ROCKのファンが好きな曲を投稿して、</h6>
+        <h6>ONE OK ROCKの良さを世界に広げることを目的としています！</h6>
+        <h6>「ONE OK ROCKの大ファン」「あまり知らないけれどこの曲は好き！」</h6>
+        <h6>など、どんな方でもOK！</h6>
+
+        <div class="morisin">
+            <img src="/assets/guitar-g.jpg" class="img_guitar">
+            <div class="moji">
+                <p><span>・全員できること</span>
+                <br>→皆の投稿を閲覧、検索</p>
+            </div>
+        </div>
+        <div class="morisinn">
+            <div class="moji2">
+                <p><span>・ログイン</span>
+                <br>
+                →新規投稿、いいね、
+                <br>コメント</p>
+            </div>
+            <img src="/assets/guitar-y.jpg" class="img_guitary">
+        </div>
+
+        <h5>このサイトを通じてONE OK ROCKの良さがもっと世界に広がることを願っています。</h5>
+
+        <%= link_to t("models.post.posts list"), posts_path %>
+        <br>
+        <a href="https://www.oneokrock.com/jp/">
+        <img src="/assets/oneokrock.jpg" alt="oneokrock.jpg" class="img_icon">
+        </a>
+
+        <a href="https://twitter.com/ONEOKROCK_japan">
+        <img src="/assets/twitter.jpg" alt="twitter.jpg" class="img_icon">
+        </a>
+
+        <a href="https://www.instagram.com/oneokrockofficial/">
+        <img src="/assets/instagram.png" alt="instagram.png" class="img_icon">
+        </a>
+
+        <a href="https://www.youtube.com/user/ONEOKROCKchannel">
+        <img src="/assets/youtube.png" alt="youtube.png" class="img_icon">
+        </a>
+    </div>
+</body>

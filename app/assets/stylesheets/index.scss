@@ -1,0 +1,25 @@
+h3 {
+    font-size: 70px;
+    font-family: "Bodoni MT Poster";
+}
+
+.haikei {
+    height: auto;
+    background: linear-gradient(#000, #000, #707070);
+    color: #fff;
+}
+
+.container {
+    display: flex;
+}
+
+.posts-container {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+.post-container {
+    justify-content: center;
+    justify-content: space-around;
+}

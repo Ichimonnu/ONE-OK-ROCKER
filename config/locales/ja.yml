@@ -1,0 +1,15 @@
+ja:
+  models:
+    post:
+      home: "ホーム"
+      my page: "マイページ"
+      sign up: "新規登録"
+      log in: "ログイン"
+      log out: "ログアウト"
+      new post: "新規投稿へ"
+      detail: "詳細へ"
+      edit: "編集する"
+      posts list: "皆の投稿"
+      delete: "削除する"
+      new: "投稿する"
+      back: "戻る"
