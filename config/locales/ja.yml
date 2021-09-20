@@ -1,6 +1,6 @@
-ja:
-  models:
-    post:
+ja: 
+  models: 
+    post: 
       home: "ホーム"
       my page: "マイページ"
       sign up: "新規登録"
