@@ -8,7 +8,7 @@
 </header>
 
 <div class="second-block">
-  <h2>My page</h2>
+  <h3>My page</h3>
 
   <%= image_tag @user.image_url, size: "200x200", class: "image" if @user.image? %>
   <p>名前(name) : <%= @user.name %></p>
@@ -18,7 +18,7 @@
     <%= link_to t("models.post.edit"), edit_user_registration_path %>
   <% end %>
 
-  <h2>my posts</h2>
+  <h3>my posts</h3>
   <% @user.posts.each do |t| %>
       <%= t.title %>
       <br>
