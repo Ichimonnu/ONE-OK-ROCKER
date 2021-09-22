@@ -2,6 +2,9 @@
 <div class="header-list">
     <ul>
         <li><%= link_to t("models.post.posts list"), posts_path %></li>
+        <% if user_signed_in? %>
+            <li><%= link_to t("models.post.my page"), user_path(current_user.id) %></li>
+        <% end %>
     </ul>
 </div>
 </header>

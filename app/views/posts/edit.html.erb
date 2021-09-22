@@ -34,7 +34,7 @@
 
         <% if user_signed_in? && current_user.id == @post.user_id %>
         <%#= f.submit "edit" %>
-        <%= f.submit (t "models.post.edit") %>
+        <%= f.submit (t "models.post.edit"),{class: "button"} %>
         <% end %>
     <% end %>
 </div>
