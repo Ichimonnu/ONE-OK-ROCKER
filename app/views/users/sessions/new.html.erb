@@ -1,9 +1,8 @@
+<br>
 <h3>Log in</h3>
-<%#= stylesheet_link_tag "okawa", :media => "all" %>
   <div class="pw-form">
       <div class="pw-form-container">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          
           <p>
             <%= f.label :email %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

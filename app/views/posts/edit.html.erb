@@ -8,33 +8,34 @@
 </header>
 
 <div class="taipon">
-    <h3>Edit</h3>
+    <div class="kaorin">
+        <h3>Edit</h3><br>
+        <%= form_for @post do |f| %>
+            <div class="field">
+                <%= f.label :曲名 %> (Title)
+                <%= f.text_field :title, :size => 140 %> 
+            </div>
+            <div class="field">
+                <%= f.label :好きな理由 %> (Why do you like?)
+                <%= f.text_field :content, :size => 140 %>
+            </div>
+            <div class="field">
+                <%= f.label :好きな歌詞 %> (favorite lyric)
+                <%= f.text_field :lyric, :size => 140 %> 
+            </div>
+            <div class="field">
+                <%= f.label :どんなときに聴く？ %> (genre)
+                <%= f.text_field :genre, :size => 140 %>
+            </div>
+            <div class="youtube_url">
+                <%= f.label :youtube_url %>
+                <%= f.text_field :youtube_url %> <br>
+            </div>
 
-    <%= form_for @post do |f| %>
-        <div class="field">
-            <%= f.label :曲名 %> (Title)
-            <%= f.text_field :title, :size => 140 %> 
-        </div>
-        <div class="field">
-            <%= f.label :好きな理由 %> (Why do you like?)
-            <%= f.text_field :content, :size => 140 %>
-        </div>
-        <div class="field">
-            <%= f.label :好きな歌詞 %> (favorite lyric)
-            <%= f.text_field :lyric, :size => 140 %> 
-        </div>
-        <div class="field">
-            <%= f.label :どんなときに聴く？ %> (genre)
-            <%= f.text_field :genre, :size => 140 %>
-        </div>
-        <div class="youtube_url">
-            <%= f.label :youtube_url %>
-            <%= f.text_field :youtube_url %> <br>
-        </div>
-
-        <% if user_signed_in? && current_user.id == @post.user_id %>
-        <%#= f.submit "edit" %>
-        <%= f.submit (t "models.post.edit"),{class: "button"} %>
+            <% if user_signed_in? && current_user.id == @post.user_id %>
+            <%#= f.submit "edit" %>
+            <%= f.submit (t "models.post.edit"),{class: "button"} %>
+            <% end %>
         <% end %>
-    <% end %>
+    </div>
 </div>
