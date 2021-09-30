@@ -3,8 +3,9 @@ class PostsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create]
 
     def index
+        @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
         if params[:search] == nil
-            # @posts= Post.all.page(params[:page]).per(3)
+            #@posts= Post.all.page(params[:page]).per(3)
             @posts= Post.all.page(params[:page]).per(3).order("id DESC")
         elsif params[:search] == ''
             @posts= Post.all.page(params[:page]).per(3).order("id DESC")
@@ -63,7 +64,7 @@ class PostsController < ApplicationController
     
     private
     def post_params
-        params.require(:post).permit(:title,:content,:lyric,:genre,:youtube_url)
+        params.require(:post).permit(:title,:content,:lyric,:genre,:youtube_url,tag_ids: [])
     end
 
 end

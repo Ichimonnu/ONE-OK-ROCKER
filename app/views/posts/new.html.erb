@@ -11,31 +11,34 @@
         <h3>New Post</h3><br>
         <%= form_for @post do |f| %>
             <div class="field">
-                <%= f.label :曲名 %> (Title)
+                <p><%= f.label :曲名 %> (Title)</p>
                 <%= f.text_field :title, :size => 140 %>
             </div>
             <div class="field">
-                <%= f.label :好きな理由 %> (Why do you like?)
+                <p><%= f.label :好きな理由 %> (Why do you like?)</p>
                 <%= f.text_field :content, :size => 140 %>
             </div>
             <div class="field">
-                <%= f.label :好きな歌詞 %> (favorite lyric)
+                <p><%= f.label :好きな歌詞 %> (favorite lyric)</p>
                 <%= f.text_field :lyric, :size => 140 %>
             </div>
-            <div class="field">
-                <%= f.label :どんなときに聴く？ %> (genre)
-                <%= f.text_field :genre, :size => 140 %>
+            <div class="check_box">
+                <!--span>ジャンル(genre)</span-->
+                <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                    <div>
+                        <%= tag.label do %>
+                            <%= tag.check_box %>
+                            <%= tag.text %>
+                        <% end %>
+                    </div>
+                <% end %>
             </div>
             <div class="youtube_url">
-                <%= f.label :youtube_url %>
+                <p><%= f.label :youtube_url %></p>
                 <%= f.text_field :youtube_url %> <br>
             </div>
-            <%#= f.submit "Post" %>
             <br>
             <%= f.submit (t "models.post.new"),{class: "button"} %>
         <% end %>
-        <!--footer>
-            <p>Copyright © ishimon All Rights Reserved.</p>
-        </!--footer-->
     </div>
 </div>

@@ -26,7 +26,9 @@
         <p>曲名 (Title)：<%= @post.title %></p>
         <p>好きな理由 (Why do you like?)：<%= @post.content %></p>
         <p>好きな歌詞 (favorite lyric)：<%= @post.lyric %></p>
-        <p>どんなときに聴く？ (genre)：<%= @post.genre %></p>
+        <% @post.tags.each do |tag| %>
+            <%= tag.name %>
+        <% end %>
 
         <!--動画-->
         <p>
