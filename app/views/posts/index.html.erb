@@ -36,7 +36,11 @@
                 <%= image_tag t.user.image_url, size: "30x30", class: "imagepost" if t.user.image? %>
             </div>
             <div class="post">
-                <a href="/users/<%= t.user_id %>"><%= t.user.name %></a>
+                <% if user_signed_in? %>
+                    <a href="/users/<%= t.user_id %>"><%= t.user.name %></a>
+                <% else %>
+                    <%= t.user.name %>
+                <% end %>
             </div>
         </div>
         <div class="post">曲名 (Title)：
@@ -87,7 +91,11 @@
                         <%= image_tag t.user.image_url, size: "30x30", class: "imagepost" if t.user.image? %>
                     </div>
                     <div class="post">
-                        <a href="/users/<%= t.user_id %>"><%= t.user.name %></a>
+                        <% if user_signed_in? %>
+                            <a href="/users/<%= t.user_id %>"><%= t.user.name %></a>
+                        <% else %>
+                            <%= t.user.name %>
+                        <% end %>
                     </div>
                 </div>
                 <div class="post">曲名 (Title)：

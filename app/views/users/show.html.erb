@@ -20,9 +20,9 @@
 
   <h3>my posts</h3>
   <% @user.posts.each do |t| %>
-      <%= t.title %>
+      <%#= t.title %>
+      <p><%= link_to t.title, post_path(t.id) %></p>
       <br>
   <% end %>
 
-  
 </div>
