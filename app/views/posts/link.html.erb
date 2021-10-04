@@ -11,7 +11,7 @@
             <% if user_signed_in? %>
                 <li><%= link_to t("models.post.my page"), user_path(current_user.id) %></li>
             <% end %>
-            <% if "https://oneokrocker.herokuapp.com/posts/link?locale=ja" %>
+            <% if request.url== "https://oneokrocker.herokuapp.com/posts/link?locale=ja" %>
                 <li><a href="https://oneokrocker.herokuapp.com/posts/link?locale=en">English ver</a></li>
             <% else %>
                 <li><a href="https://oneokrocker.herokuapp.com/posts/link?locale=ja">Japanese ver</a></li>
