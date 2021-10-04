@@ -19,7 +19,7 @@
 <div class="haikei">
     <%# Postを検索 %>
     <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
-        <%= text_field_tag :search,'', placeholder:"Title" %>
+        <%= text_field_tag :search %>
         <%= submit_tag 'search' %>
     <% end %>
     <%= form_tag bukken_path, method: :get, class: 'boards__searchForm' do %>
@@ -30,6 +30,7 @@
                         onchange: 'submit(this.form);'
                         }
         %>
+        
     <% end %>
 
     <br>
@@ -42,11 +43,7 @@
     <% @rank_posts.each do |t| %>
         <div class="gazou">
             <div class="post">
-                <% if t.user.image? %>
-                    <img src='<%= t.user.image %>' class="imagepost" alt="default.png">
-                <% else %>
-                    <img src="/assets/default.png" class="imagepost" alt="default.png" %>
-                <% end %>
+                <%= image_tag t.user.image_url, size: "30x30", class: "imagepost" if t.user.image? %>
             </div>
             <div class="post">
                 <% if user_signed_in? %>
@@ -100,11 +97,7 @@
             <div class = "post-container">
                 <div class="gazou">
                     <div class="post">
-                        <% if t.user.image? %>
-                            <img src='<%= t.user.image %>' class="imagepost" alt="default.png">
-                        <% else %>
-                            <img src="/assets/default.png" class="imagepost" alt="default.png" %>
-                        <% end %>
+                        <%= image_tag t.user.image_url, size: "30x30", class: "imagepost" if t.user.image? %>
                     </div>
                     <div class="post">
                         <% if user_signed_in? %>

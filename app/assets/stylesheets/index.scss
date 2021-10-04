@@ -23,4 +23,24 @@ h3 {
     justify-content: center;
     justify-content: space-around;
     // margin: 1.5%;
+    .okawa {
+        max-width:30em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 1.5%;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
 }
+
+    .okawa {
+        max-width:30em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        margin-left: auto;
+        margin-right: auto;
+    }

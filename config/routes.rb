@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   root 'posts#index'
+  get 'bukken' => 'posts#bukken'
 end

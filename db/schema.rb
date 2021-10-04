@@ -41,15 +41,14 @@ ActiveRecord::Schema.define(version: 2021_09_30_112703) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "content"
-    t.string "genre"
-    t.string "title"
     t.integer "user_id"
+    t.string "genre"
     t.string "lyric"
     t.string "youtube_url"
-    t.string "video"
   end
 
   create_table "tags", force: :cascade do |t|

@@ -3,7 +3,6 @@ class PostsController < ApplicationController
     before_action :authenticate_user!, only: [:new, :create]
 
     def index
-        @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts : Post.all
         if params[:search] == nil
             #@posts= Post.all.page(params[:page]).per(3)
             @posts= Post.all.page(params[:page]).per(3).order("id DESC")
@@ -12,10 +11,17 @@ class PostsController < ApplicationController
         else
             #部分検索
             @posts = Post.where("title LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(3).order("id DESC")
+            
         end
         @rank_posts = Post.all.sort {|a,b| b.liked_users.count <=> a.liked_users.count}.first(3)
-    end
     
+    end
+
+    def bukken
+        @posts = params[:tag_id].present? ? Tag.find(params[:tag_id]).posts.page(params[:page]).per(3).order("id DESC") : Post.all.page(params[:page]).per(3).order("id DESC")
+        @rank_posts = Post.all.sort {|a,b| b.liked_users.count <=> a.liked_users.count}.first(3)
+    end
+
     def link
     end
 

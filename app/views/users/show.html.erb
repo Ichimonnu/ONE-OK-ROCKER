@@ -3,6 +3,7 @@
     <ul>
       <li><%= link_to t("models.post.home"), posts_link_path %></li>
       <li><%= link_to t("models.post.posts list"), posts_path %></li>
+      <li><%= link_to t("models.post.log out"), destroy_user_session_path, method: :delete %></li>
     </ul>
 </div>
 </header>
@@ -10,7 +11,12 @@
 <div class="second-block">
   <h3>My page</h3>
 
-  <%= image_tag @user.image_url, size: "200x200", class: "image" if @user.image? %>
+  <%#= image_tag @user.image_url, size: "200x200", class: "image" if @user.image? %>
+  <% if @user.image? %>
+    <img src='<%= @user.image %>' class="image" alt="default.png">
+  <% else %>
+    <img src="/assets/default.png" class="image" alt="default.png">
+  <% end %>
   <p>名前(name) : <%= @user.name %></p>
   <p>年齢(age) :<%= @user.profile %></p>
 
