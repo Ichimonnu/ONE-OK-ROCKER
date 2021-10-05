@@ -16,13 +16,14 @@ h3 {
 .posts-container {
     display: flex;
     justify-content: center;
-    justify-content: space-around;
+    // justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .post-container {
     justify-content: center;
-    justify-content: space-around;
-    // margin: 1.5%;
+    // justify-content: space-around;
+    margin: 0.5%;
     .okawa {
         max-width:30em;
         white-space: nowrap;
