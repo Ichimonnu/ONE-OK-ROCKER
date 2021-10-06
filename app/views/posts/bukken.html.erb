@@ -65,7 +65,11 @@
     <% @rank_posts.each do |t| %>
         <div class="gazou">
             <div class="post">
-                <%= image_tag t.user.image_url, size: "30x30", class: "imagepost" if t.user.image? %>
+                <% if t.user.image? %>
+                    <img src='<%= t.user.image %>' class="imagepost" alt="default.png">
+                <% else %>
+                    <img src="/assets/default.png" class="imagepost" alt="default.png" %>
+                <% end %>
             </div>
             <div class="post">
                 <% if user_signed_in? %>
@@ -84,12 +88,14 @@
             <div class="okawa">好きな歌詞 (favorite lyric)：
                 <%= t.lyric %>
             </div>
-        <% t.tags.each do |tag| %>
-            <%= tag.name %>
-        <% end %>
+            <div class="okawa">
+                <% t.tags.each do |tag| %>
+                    <%= tag.name %>
+                <% end %>
+            </div>
         <br>
         <tr>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%=t.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="tatan" width="504" height="284" src="https://www.youtube.com/embed/<%=t.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </tr>
         <br>
 
@@ -119,7 +125,11 @@
             <div class = "post-container">
                 <div class="gazou">
                     <div class="post">
-                        <%= image_tag t.user.image_url, size: "30x30", class: "imagepost" if t.user.image? %>
+                        <% if t.user.image? %>
+                            <img src='<%= t.user.image %>' class="imagepost" alt="default.png">
+                        <% else %>
+                            <img src="/assets/default.png" class="imagepost" alt="default.png" %>
+                        <% end %>
                     </div>
                     <div class="post">
                         <% if user_signed_in? %>
@@ -143,7 +153,7 @@
                     <% end %>
                 <br>
                 <tr>
-                <iframe width="480" height="265" src="https://www.youtube.com/embed/<%=t.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe class="tatan" width="480" height="265" src="https://www.youtube.com/embed/<%=t.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </tr>
                 <br>
                 <% if user_signed_in? %>
