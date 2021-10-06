@@ -6,22 +6,35 @@
     </ul>
 </div>
 </header>
+<div class="header-logo-menu">
+    <div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input"><span></span></label>
+        <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
+        <ul>
+            <li class="sarad1"><%= link_to t("models.post.posts list"), posts_path %></li>
+            <li class="sarad"><%= link_to t("models.post.back"), :back %></li>
+        </ul>
+    </div>
+</div>
+</div>
 
 <div class="taipon">
-    <div class="kaorin">
+    <!--div class="kaorin"-->
         <h3>Edit</h3><br>
         <%= form_for @post do |f| %>
             <div class="field">
                 <p><%= f.label :曲名 %> (Title)</p>
-                <%= f.text_field :title, :size => 140 %> 
+                <%= f.text_field :title, maxlength: "25", class:"taichi" %>
             </div>
             <div class="field">
                 <p><%= f.label :好きな理由 %> (Why do you like?)</p>
-                <%= f.text_field :content, :size => 140 %>
+                <%= f.text_area :content, size: "43x5" %>
             </div>
             <div class="field">
                 <p><%= f.label :好きな歌詞 %> (favorite lyric)</p>
-                <%= f.text_field :lyric, :size => 140 %> 
+                <%= f.text_area :lyric, size: "43x5" %>
             </div>
             <div class="check_box">
                 <!--span>ジャンル(genre)</span-->
@@ -48,5 +61,5 @@
             <%= f.submit (t "models.post.edit"),{class: "button"} %>
             <% end %>
         <% end %>
-    </div>
+    <!--/div-->
 </div>

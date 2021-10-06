@@ -4,29 +4,6 @@
     color: #fff;
 }
 
-/*footer{
-    height: 30px;
-    background-color: #707070;
-    color: #fff;
-    width: 100%;
-    display: flex;
-    /*position: fixed;
-    position: absolute;*/
-    /*justify-content: center;
-    align-items: center;
-    bottom: 0;
-}*/
-
-// .button {
-//     display: block;
-//     text-decoration: none;
-//     text-align: center;
-//     background-color: #44AEFF;
-//     border-radius: 5px;
-//     transition: all 0.5s;
-//     margin: 10px;
-// }
-
 .button {
     text-decoration: none;
     font-weight: bold;
@@ -43,7 +20,14 @@
     text-shadow: none;
 }
 
-// input[type="text"] {
-//     width: 980px;
-//     height: auto;
-// }
+
+@media screen and (max-width: 600px){
+    .taichi {
+        width: 250px;
+        height: 20px;
+    }
+}
+
+.taichi {
+    width: 300px;
+}

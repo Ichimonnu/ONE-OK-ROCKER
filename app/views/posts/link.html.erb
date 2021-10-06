@@ -19,6 +19,32 @@
         </ul>
     </div>
     </header>
+    <div class="header-logo-menu">
+    <div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input"><span></span></label>
+        <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
+            <ul>
+                <% if user_signed_in? %>
+                    <li class="sarad1"><%= link_to t("models.post.log out"), destroy_user_session_path, method: :delete %></li>
+                <% else %>
+                    <li class="sarad"><%= link_to t("models.post.sign up"), new_user_registration_path %></li>
+                    <li><%= link_to t("models.post.log in"), new_user_session_path %></li>
+                <% end %>
+                <% if user_signed_in? %>
+                    <li class="sarad"><%= link_to t("models.post.my page"), user_path(current_user.id) %></li>
+                <% end %>
+                <% if request.url== "https://oneokrocker.herokuapp.com/posts/link?locale=ja" %>
+                    <li class="sarad"><a href="https://oneokrocker.herokuapp.com/posts/link?locale=en">English ver</a></li>
+                <% else %>
+                    <li class="sarad"><a href="https://oneokrocker.herokuapp.com/posts/link?locale=ja">Japanese ver</a></li>
+                <% end %>
+            </ul>
+    </div>
+</div>
+</div>
+
 
     <div class="top">
         <h1>ONE OK ROCKER</h1>

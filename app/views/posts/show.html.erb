@@ -8,12 +8,31 @@
     </ul>
 </div>
 </header>
+<div class="header-logo-menu">
+<div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input"><span></span></label>
+        <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
+        <ul>
+            <li class="sarad1"><%= link_to t("models.post.posts list"), posts_path %></li>
+            <% if user_signed_in? %>
+                <li class="sarad"><%= link_to t("models.post.my page"), user_path(current_user.id) %></li>
+            <% end %>
+        </ul>
+    </div>
+</div>
+</div>
 
 <div class="top">
     <h3>Post detail</h3>
         <div class="gazou">
             <div class="post">
-            <%= image_tag @post.user.image_url, size: "30x30", class: "imagepost" if @post.user.image? %>
+                <% if @post.user.image? %>
+                    <img src='<%= @post.user.image %>' class="imagepost" alt="default.png">
+                <% else %>
+                    <img src="/assets/default.png" class="imagepost" alt="default.png" %>
+                <% end %>
             </div>
             <div class="post">
             <%= @post.user.name %>:
@@ -24,15 +43,31 @@
         </div>
     <div class="post">
         <p>曲名 (Title)：<%= @post.title %></p>
-        <p>好きな理由 (Why do you like?)：<%= @post.content %></p>
-        <p>好きな歌詞 (favorite lyric)：<%= @post.lyric %></p>
+        <p>好きな理由 (Why do you like?)：
+            <div class="riyuu">
+            <% if @post.content.nil? %>  
+                <%= @post.content %>
+            <% else %>
+                <%= safe_join(@post.content.split("\n"),tag(:br)) %>    
+            <% end %>
+            </div>
+        </p>
+        <p>好きな歌詞 (favorite lyric)：
+            <div class="riyuu">
+            <% if @post.lyric.nil? %>  
+                <%= @post.lyric %>
+            <% else %>
+                <%= safe_join(@post.lyric.split("\n"),tag(:br)) %>    
+            <% end %>
+            </div>
+        </p>
         <% @post.tags.each do |tag| %>
             <%= tag.name %>
         <% end %>
 
         <!--動画-->
         <p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="tatan" width="504" height="284" src="https://www.youtube.com/embed/<%= @post.youtube_url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </p>
 
         <!--時間表示-->

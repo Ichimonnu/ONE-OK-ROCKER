@@ -1,37 +1,63 @@
-<%#= stylesheet_link_tag "okawa", :media => "all" %>
-<div class="omiku">
-  <div class="chi">
-    <h3>Sign up</h3>
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "users/shared/error_messages", resource: resource %>
+<header>
+<div class="header-list">
+    <ul>
+      <li><%= link_to t("models.post.home"), posts_link_path %></li>
+      <li><%= link_to t("models.post.posts list"), posts_path %></li>
+    </ul>
+</div>
+</header>
+<div class="header-logo-menu">
+<div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input"><span></span></label>
+        <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
+        <ul>
+          <li class="sarad1"><%= link_to t("models.post.home"), posts_link_path %></li>
+          <li class="sarad"><%= link_to t("models.post.posts list"), posts_path %></li>
+        </ul>
+    </div>
+</div>
+</div>
+<div class="taipon">
+  <div class="omiku">
+    <div class="chi">
+      <div class="syun">
+      <h3>Sign up</h3>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "users/shared/error_messages", resource: resource %>
+      </div>
+          <div class="field">
+            <%= f.label :name, {class:'syun'} %><br />
+            <%= f.text_field :name, autofocus: true %>
+          </div>
 
-        <div class="field">
-          <%= f.label :name %><br />
-          <%= f.text_field :name, autofocus: true %>
-        </div>
+          <div class="field">
+            <%= f.label :email, {class:'syun'} %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
 
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
+          <div class="field">
+            <div class="syun">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+              <br />
+              <%= f.password_field :password, autocomplete: "new-password" %>
+            </div>
+          </div>
 
-        <div class="field">
-          <%= f.label :password %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
+          <div class="field">
+            <%= f.label :password_confirmation, {class:'syun'} %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
 
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div>
+          <div class="actions">
+            <%= f.submit "Sign up" %>
+          </div>
+        <% end %>
 
-        <div class="actions">
-          <%= f.submit "Sign up" %>
-        </div>
-      <% end %>
-
+    </div>
   </div>
 </div>

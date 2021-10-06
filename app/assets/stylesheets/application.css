@@ -21,7 +21,7 @@
 
 header {
     background-color: #000;
-    height: 80px;
+    height: 40px;
     display: flex;
     justify-content: flex-end;
 }
@@ -82,6 +82,15 @@ img.img_icon{
     height: 200px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+@media screen and (max-width: 600px){
+    .image{
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
 }
 
 .imagepost{
@@ -256,6 +265,10 @@ body {
     top: 3px;
     left: -3px
 }
+/* signupとloginページの文字 */
+.syun {
+    color: #000;
+}
 
 .omiku{
     display: flex;
@@ -272,15 +285,15 @@ body {
     margin-top: 60px;
 }
 
-.kaorin {
+/* .kaorin { */
     /* background-color: #bbb;
     color: #000;
     border-radius: 30px; */
     /* width: auto; */
-    margin-left: auto;
+    /* margin-left: auto;
     margin-right: auto;
     margin-top: 60px;
-}
+} */
 
 footer{
     height: 30px;
