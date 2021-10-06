@@ -35,6 +35,7 @@ h3 {
     }
 }
 
+@media screen and (max-width: 600px){
     .okawa {
         max-width:30em;
         white-space: nowrap;
@@ -45,6 +46,7 @@ h3 {
         margin-left: auto;
         margin-right: auto;
     }
+}
 
     // レスポンシブ対応
     @media screen and (max-width: 600px){
@@ -195,8 +197,4 @@ h3 {
         #nav-drawer {
             display: none;
         }
-    }
-
-    .amigo {
-        font-size: 5%;
     }

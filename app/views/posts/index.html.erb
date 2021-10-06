@@ -100,9 +100,15 @@
             <div class="okawa">曲名 (Title)：
                 <%= t.title %>
             </div>
-            <div class="okawa">好きな理由 (Why do you like?)：
+        <p>好きな理由 (Why do you like?)：
+            <div class="riyuu">
+            <% if t.content.nil? %>  
                 <%= t.content %>
+            <% else %>
+                <%= safe_join(t.content.split("\n"),tag(:br)) %>    
+            <% end %>
             </div>
+        </p>
             <div class="okawa">好きな歌詞 (favorite lyric)：
                 <%= t.lyric %>
             </div>
