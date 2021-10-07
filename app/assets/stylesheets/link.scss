@@ -10,7 +10,7 @@
 }
 
 h1 {
-    font-family: "Bodoni MT Poster";
+    font-family: "Bodoni MT Poster",'Bodoni 72';
     color: #fff;
     font-size: 100px;
 }
@@ -134,17 +134,19 @@ img.img_guitary {
     .morisin {
         display: flex;
         margin: 0 auto;
-        width: 30%;
+        width: 55%;
         justify-content: space-around;
         margin-top: 5%;
+        align-items: center;
     }
     
     .morisinn {
         display: flex;
         margin: 0 auto;
-        width: 30%;
+        width: 55%;
         justify-content: space-around;
         vertical-align: top;
+        align-items: center;
     }
     
     /*全員できること*/
@@ -191,7 +193,7 @@ img.img_guitary {
     
     /*黄色のギター*/
     img.img_guitary {
-        width: 40%;
+        width: 20%;
         height: 80%;
         transform: rotate(270deg);
         display: inline-block;
