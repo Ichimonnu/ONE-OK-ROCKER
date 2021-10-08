@@ -60,7 +60,7 @@
 <div class="haikei">
     <%# Postを検索 %>
     <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
-        <%= text_field_tag :search,'', placeholder:"Title" %>
+        <%= text_field_tag :search,'', placeholder:"曲名(Title)" %>
         <%= submit_tag 'search' %>
     <% end %>
     <%= form_tag bukken_path, method: :get, class: 'boards__searchForm' do %>
@@ -109,9 +109,15 @@
             <% end %>
             </div>
         </p>
-            <div class="okawa">好きな歌詞 (favorite lyric)：
+        <p>好きな歌詞 (favorite lyric)：
+            <div class="riyuu">
+            <% if t.lyric.nil? %>  
                 <%= t.lyric %>
+            <% else %>
+                <%= safe_join(t.lyric.split("\n"),tag(:br)) %>    
+            <% end %>
             </div>
+        </p>
             <div class="okawa">
                 <% t.tags.each do |tag| %>
                     <%= tag.name %>
